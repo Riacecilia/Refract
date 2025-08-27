@@ -164,6 +164,7 @@ In Svelte 5, the new `$state` and other "runes" are the direct primitives for a 
 
 A lens...
 - is an object, automatically created for each component. 
-- gives each component scoped access to Refract's features
-- acts as a container for each component instance by ensuring that any reactive state you declare, or effects that you run are tied directly and exclusively to that specific component. 
+- is the first and only argument in a component's set up function. It gives each component scoped access to Refract's features.
+- acts as a container for each component instance. Any reactive state you declare, or effects that you run are tied directly and exclusively to that specific component. 
 - each component's behaviour stays inside the component and doesn't affect other components or global state.
+

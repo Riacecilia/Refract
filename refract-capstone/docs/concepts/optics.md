@@ -144,3 +144,9 @@ const ShoppingCart = createComponent(({ lens }) => {
 // <ShoppingCart />
 ```
 
+## Recap
+- An optic is a reusable hook/ logic pattern that encapsulates a specific behaviour you want for your UI.
+- Optics allow you to put complex functionality into a single function, that can be reused across multiple components.
+- Optics are typically used to manage internal reactive state and to manage side effects (add event listeners, set timers, fetch data, add animations etc.)
+- Optic function names begin with `use`.
+- To use an optic, you must call it at the top of your component set up function to get the reactive values it provides.

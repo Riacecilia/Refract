@@ -111,3 +111,9 @@ See how Refract compares with two other UI frameworks: React and Svelte.
 
 
 ## What's Next 
+
+- Look at our [installation](Installation.md) to get started with Refract immediately.
+
+- Read [Concepts](./concepts/) to get a deeper understanding of the different parts of how Refract works.
+
+- Build something right away by following along with our [tutorials](./Tutorials/)

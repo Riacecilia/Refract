@@ -2,6 +2,60 @@
 sidebar_position: 2
 title: Installation
 ---
+## Prerequisites
+- Node.js ≥ 19
+- A modern browser
+- A code editor (we recommend VS Code)
+- A package manager - npm (comes with Node.js), yarn or pnpm
+
+## Create your project directory 
+
+```
+mkdir my-refract-app
+cd my-refract-app
+``` 
+
+## Initialise project 
+Set up a new Node.js project and generate a package.json file:
+
+```
+npm init -y
+```
+
+## Install Refract and dependencies
+Add Refract along with the essential development dependencies:
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="npm" label="npm" default>
+    ```
+    npm install refract-js
+    ```
+  </TabItem>
+  <TabItem value="yarn" label="yarn">
+    ```
+    yarn add refract-js
+    ```
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    ```
+    pnpm add refract-js
+    ```
+  </TabItem>
+</Tabs>
+
+
+
+## Configure development environment 
+
+
+## Verify your installation 
+
+
+## Add Refract to an existing project 
+
 
 ## First time installation 
 

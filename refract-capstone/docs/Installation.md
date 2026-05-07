@@ -47,6 +47,35 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 
 
+## Create your project structure
+Create the following folders and files:
+
+```
+my-refract-app/
+├── src/
+│   ├── components/
+│   │   ├── App.js
+│   │   └── Header.js
+│   ├── optics/
+│   │   └── useTheme.js
+│   ├── main.js
+│   └── index.html
+├── refract.config.js
+└── package.json
+```
+
+Here's what each part does:
+
+- `src/`: Your source code lives here
+- `src/components/`: All Refract components live here
+  - `App.js`: Main app component
+  - `Header.js`: Individual UI components
+- `src/optics/`: Reusable state logic and custom hooks
+- `src/main.js`: Your app's entry point where you mount the root component
+- `src/index.html`: The HTML template that loads your app
+- `refract.config.js`: Optional configuration file for compiler settings and build options
+- `package.json`: npm package file with  dependencies
+
 
 ## Configure development environment 
 

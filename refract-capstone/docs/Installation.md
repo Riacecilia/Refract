@@ -61,7 +61,10 @@ my-refract-app/
 │   ├── main.js
 │   └── index.html
 ├── refract.config.js
+└── vite.config.js
 └── package.json
+
+
 ```
 
 Here's what each part does:
@@ -74,6 +77,7 @@ Here's what each part does:
 - `src/main.js`: Your app's entry point where you mount the root component
 - `src/index.html`: The HTML template that loads your app
 - `refract.config.js`: Optional configuration file for compiler settings and build options
+- `vite.config.js`: contains configuration file for Vite
 - `package.json`: npm package file with  dependencies
 
 ## Modify project files
@@ -120,15 +124,52 @@ const App = createComponent(() => {
 export default App;
 ```
 
-## Configure the development environment 
+## Add your build tool configuration
+
+Vite (recommended)
+
+Install the Refract plugin 
+```
+npm install @refract/vite-plugin
+```
+
+Create a new file named `vite.config.js` and add the following code:
+
+```
+import { defineConfig } from 'vite';
+import refract from '@refract/vite-plugin';
+
+export default defineConfig({
+  plugins: [refract()],
+});
+```
+
+## Run the development server 
+
+To view your site, you'll need to run the development server. Run the following command in the terminal.
+ 
+<Tabs>
+  <TabItem value="npm" label="npm" default>
+    ```
+    npm run dev
+    ```
+  </TabItem>
+  <TabItem value="yarn" label="yarn">
+    ```
+    yarn dev
+    ```
+  </TabItem>
+  <TabItem value="pnpm" label="pnpm">
+    ```
+    pnpm dev
+    ```
+  </TabItem>
+</Tabs>
 
 
-## Run the server and verify your installation 
+If everything is working, you should see a new window should open in your browser at localhost:3000, and you should see the message "Hello from Refract. 
 
-Run the code. If everything is working, you should see the message "Hello from Refract. You've installed everything correctly".
 
 If you don't see this message, look at our troubleshooting section to resolve common installation errors.
-
-## Add Refract to an existing project 
 
 

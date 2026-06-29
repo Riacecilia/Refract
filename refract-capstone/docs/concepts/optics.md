@@ -11,43 +11,13 @@ An optic allows you to take complex functionality—such as managing state, hand
 
 This promotes a clean, organized codebase where components remain focused on their primary role of rendering UI.
 
-## What Does It Do?
-
-The purpose of an optic is to provide a standardized, reusable way to manage logic across your application. It typically combines two key features:
-
-1. **State Management:** An optic uses the **`useRefraction()`** hook to create and manage its own internal, reactive state. When this state is updated, any component using the optic will automatically reflect the changes.
-
-2. **Side Effect Management:** An optic uses the **`useOptic()`** hook to manage side effects, such as adding event listeners, fetching data, or setting up a timer. This hook handles cleanup automatically, preventing memory leaks and other common issues.
-
-By combining these features, an optic ensures that its internal logic is completely self-contained and isolated from the components that use it.
-
 ## When to Use Optics
 
 You should use an optic:
 - when you have a piece of logic that needs to be reused in multiple places  
 - when you want to move a component's complicated, non-UI-related tasks into a separate, reusable function.
-
-
-Common use cases of optics include:
-
-- **Handling Form State and Validation:** Create an optic to manage input values and validate them in real-time.
-
-- **Managing Animations:** Encapsulate the logic for a specific animation, making it easy to apply to any component.
-
-- **Fetching Asynchronous Data:** Build an optic to handle data fetching, loading states, and error handling for a specific API endpoint.
-
-- **Responding to External Events:** Create an optic to manage event listeners for things like mouse movement, key presses, or media queries.
-
-
-
-## Advantages of Optics
-
-- **Modularity and Reusability**: Optics are designed to be highly modular. By encapsulating logic, state, and side effects into a single function, you can write the code once and easily reuse it across multiple components. This reduces code duplication and makes your application easier to maintain.
-
-- **Encapsulation and Clarity**: Optics hide complex implementation details. A component that needs to track mouse position, for example, doesn't need to know about `mousemove` event listeners or state management—it simply calls the `useMousePosition` optic. This keeps the component's code clean and focused on its primary job of rendering the UI.
-
-- **Performance Benefits**: Refract's optics are "dependency-aware," meaning they benefit from the framework's built-in optimizations. This includes memoization and caching, which ensure that the optic's internal computations only re-run when their dependencies have actually changed. This fine-grained reactivity helps minimize unnecessary work and improves application performance.
-
+- manage input values and validate them in real time
+- to manage side effects such as event listeners, fetching asynchornous data, setting up timers
 
 
 ## Syntax
@@ -78,8 +48,7 @@ function useMyOptic(inputArgs) {
 ```
 
 
-
-## How to Use Optics
+## Usage
 
 Using an optic is straightforward and declarative. You simply call the optic function at the top level of your component, and it provides you with the state and functionality you need.
 
@@ -94,11 +63,77 @@ Here are the basic steps:
 4. **Use the Values:** Use the returned values (refractions) within your component's JSX to display data and trigger behavior.
     
 
-
 ## Example: A Real-Life Shopping Cart Scenario
 
-This example demonstrates how to use multiple optics to manage a shopping cart. It shows how optics can be chained together, where one optic's output becomes the input for another, creating a robust and modular system.
+Aim: To declaratively calculate and display a shopping cart's financial summary using a highly optimized, reactive state dependency graph that automatically updates the UI only when relevant values change.
 
+
+### 1. Initialise the base state
+
+```javascript
+// Global base state
+const taxRate = useRefraction(0.08);
+
+// Local base state inside ShoppingCart
+const items = lens.useRefraction([
+  { name: 'Apples', price: 1.50, quantity: 3 },
+  { name: 'Milk', price: 3.00, quantity: 1 },
+]);
+```
+Establish your raw source data nodes before any optics are introduced. This instantiates the global taxRate refraction outside the component and the local items array refraction inside the component configuration.
+
+
+### 2. Chain the subtotal optic
+
+```javascript
+const subtotal = lens.useOptic(() => {
+  return items.value.reduce((sum, item) => sum + item.price * item.quantity, 0);
+});
+
+```
+Set up your first optic node named subtotal. It is chained directly to the raw items refraction node, recalculating a single price value whenever items are added, removed, or modified.
+
+
+### 3. Chain the taxAmount optic
+
+```js
+const taxAmount = lens.useOptic(() => {
+  return subtotal.value * taxRate.value;
+});
+```
+
+Chain the next optic node named taxAmount. This optic creates a multi-parent dependency, chaining its logic directly to the output of the subtotal optic node from Step 2 as well as the global taxRate node from Step 1.
+
+
+### 4. Chain the total optic
+
+```js
+const total = lens.useOptic(() => {
+  return subtotal.value + taxAmount.value;
+});
+```
+Chain the final derived data node named total. This optic sits at the end of the chain, combining the computed outputs of both the subtotal optic (Step 2) and the taxAmount optic (Step 3).
+
+
+### 5. Bind to the layout
+Finally, read from the .value property of these optics inside your JSX. Refract hooks these DOM elements directly into the graph so they react automatically.
+
+
+```js
+// Step 5: Read from the optics and bind their values to the layout
+  return (
+    <div style={{ padding: '20px', border: '2px solid #28a745', borderRadius: '10px', fontFamily: 'sans-serif' }}>
+      <h3 style={{ margin: '0 0 10px 0' }}>Shopping Cart Summary</h3>
+      <p>Subtotal: ${subtotal.value.toFixed(2)}</p>
+      <p>Tax ({taxRate.value * 100}%): ${taxAmount.value.toFixed(2)}</p>
+      <hr style={{ margin: '10px 0' }} />
+      <p style={{ fontSize: '1.2em', fontWeight: 'bold' }}>Total: ${total.value.toFixed(2)}</p>
+    </div>
+  );
+}); // <-- Closes the createComponent function wrapper
+```
+
+### 6. Full Code snippet
 ```js
 // This code is a conceptual example for documentation and is not runnable.
 
@@ -144,9 +179,3 @@ const ShoppingCart = createComponent(({ lens }) => {
 // <ShoppingCart />
 ```
 
-## Recap
-- An optic is a reusable hook/ logic pattern that encapsulates a specific behaviour you want for your UI.
-- Optics allow you to put complex functionality into a single function, that can be reused across multiple components.
-- Optics are typically used to manage internal reactive state and to manage side effects (add event listeners, set timers, fetch data, add animations etc.)
-- Optic function names begin with `use`.
-- To use an optic, you must call it at the top of your component set up function to get the reactive values it provides.

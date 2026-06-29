@@ -223,8 +223,3 @@ const App = createComponent(() => {
 export default App;
 
 ```
-
-## Recap
- - A refraction is a reactivity primitive, the smallest value that the UI framework can track.
- - Refractions allow for automatic dependency tracking. If a refraction changes, the UI only reexecutes the precise code that depended on the specific refraction.
-- Refractions are used wherever you expect data in your application to be reactive. 

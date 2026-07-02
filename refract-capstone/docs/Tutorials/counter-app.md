@@ -3,9 +3,17 @@ title: Build a counter component
 sidebar_position: 1
 ---
 
-# Build a counter component in Refract
+# Build a counter application in Refract
 
-This step-by-step guide will walk you through creating a simple counter component that manages its own local state.
+In this tutorial, we will create a counter application in Refract. 
+
+Along the way we will: 
+- create a component 
+- add reactivity to the counter so the UI changes when a user clicks it
+- create styling for the application user interface
+
+## Prerequisites
+Before you start, make sure you have done the following. 
 
 ## Step 1: Create the Component Shell
 

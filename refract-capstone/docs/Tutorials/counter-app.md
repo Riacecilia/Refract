@@ -41,9 +41,13 @@ const Counter = createComponent(() => {
 ```
 
 
-Notice how the starting count variable is defined by `useRefraction` being set to 0.
-When a user clicks a button, the value of setCount updates by increasing by 1.
+Notice how the starting count variable is defined by `useRefraction` being set to 0. When a user clicks a button, the value of setCount updates by increasing by 1.
 
+## Live Demo
+
+import CounterDemo from "@site/src/CounterDemo";
+
+<CounterDemo />
 
 
 ## Step 2: Add Local, Isolated State

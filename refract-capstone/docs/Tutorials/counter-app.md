@@ -13,7 +13,10 @@ Along the way we will:
 - create styling for the application user interface
 
 ## Prerequisites
-Before you start, make sure you have done the following. 
+Before you start, make sure you have:
+
+- Installed Refract
+- Basic knowledge of Javascript
 
 ## Step 1: Create the Component Shell
 

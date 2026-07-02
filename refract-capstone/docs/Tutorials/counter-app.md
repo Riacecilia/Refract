@@ -19,6 +19,7 @@ Before you start, make sure you have:
 - Basic knowledge of Javascript
 
 ## 1. Initialise your application
+In your `main.js` file, add the following code:
 
 ```js
 import { createApp } from '@refract-framework/core';
@@ -27,6 +28,8 @@ const app = createApp();
 ```
 
 ## 2. Create the counter component
+
+In your `app.js` file, add the following code:
 
 ```js
 import { createComponent, useRefraction } from '@refract-framework/core';
@@ -60,6 +63,7 @@ import CounterDemo from "@site/src/CounterDemo";
 
 ## 3. Register the component and mount the app
 
+Add the following code to the `main.js` file
 ```js
 app.registerComponent('counter', Counter);
 
@@ -70,3 +74,48 @@ app.mount('#app');
 ```
 
 ## 4. Full code for your application
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="main.js" label="main.js" default>
+    ```
+    npm install refract-js
+    ```
+  </TabItem>
+  <TabItem value="app.js" label="app.js">
+    ```
+    yarn add refract-js
+    ```
+  </TabItem>
+  <TabItem value="index.html" label="index.html">
+    ```
+    <!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refract Counter App</title>
+    <!-- Links your CSS styling file -->
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <!-- The essential HTML box where your app will inject itself -->
+    <div id="app"></div>
+
+    <!-- The script tag that tells the browser to run your JavaScript -->
+    <script type="module" src="main.js"></script>
+</body>
+</html>
+    ```
+  </TabItem>
+  <TabItem value="style.css" label="style.css" default>
+    ```
+    npm install refract-js
+    ```
+  </TabItem>
+</Tabs>
+

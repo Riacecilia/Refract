@@ -18,7 +18,15 @@ Before you start, make sure you have:
 - Installed Refract
 - Basic knowledge of Javascript
 
-## Step 1: Create the counter component
+## 1. Initialise your application
+
+```js
+import { createApp } from '@refract-framework/core';
+
+const app = createApp();
+```
+
+## 2. Create the counter component
 
 ```js
 import { createComponent, useRefraction } from '@refract-framework/core';

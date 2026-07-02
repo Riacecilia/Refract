@@ -18,21 +18,33 @@ Before you start, make sure you have:
 - Installed Refract
 - Basic knowledge of Javascript
 
-## Step 1: Create the Component Shell
-
-We start by defining our Counter component using createComponent(). This function gives us access to the lens object, which is essential for managing our component's state.
+## Step 1: Create the counter component
 
 ```js
-import { createComponent } from 'refract';
+import { createComponent, useRefraction } from '@refract-framework/core';
 
-// Define the component shell and receive the `lens`.
-const Counter = createComponent(({ lens }) => {
-  // All our component logic will go here.
-  return (
-    // Our UI will be returned here.
-  );
+const Counter = createComponent(() => {
+  const [count, setCount] = useRefraction(0);
+  
+  return {
+    view: () => (
+      <div>
+        <p>Count: {count.value}</p>
+        <button onClick={() => setCount(count.value + 1)}>
+          Increment
+        </button>
+      </div>
+    )
+  };
 });
+
 ```
+
+
+Notice how the starting count variable is defined by `useRefraction` being set to 0.
+When a user clicks a button, the value of setCount updates by increasing by 1.
+
+
 
 ## Step 2: Add Local, Isolated State
 

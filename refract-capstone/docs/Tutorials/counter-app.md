@@ -58,5 +58,15 @@ import CounterDemo from "@site/src/CounterDemo";
 <CounterDemo />
 
 
+## 3. Register the component and mount the app
 
+```js
+app.registerComponent('counter', Counter);
 
+// In your HTML:
+// <div id="app"></div>
+
+app.mount('#app');
+```
+
+## 4. Full code for your application

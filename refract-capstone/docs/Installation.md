@@ -2,11 +2,15 @@
 sidebar_position: 2
 title: Installation
 ---
-## Prerequisites
+
+:::note[Prerequisites]
+
 - Node.js ≥ 19
 - A modern browser
 - A code editor (we recommend VS Code)
 - A package manager - npm (comes with Node.js), yarn or pnpm
+
+:::
 
 ## Create your project directory 
 
@@ -15,7 +19,7 @@ mkdir my-refract-app
 cd my-refract-app
 ``` 
 
-## Initialise project 
+## Initialise the project 
 Set up a new Node.js project and generate a package.json file:
 
 ```

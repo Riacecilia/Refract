@@ -6,13 +6,10 @@ title: Tutorials
 
 Welcome to the tutorials for Refract.
 
-In this section, you can follow a step by step guide on how to implement Refract in a real life scenario.
+In this section, you can follow tutorials to build small self contained projects that implement the main concepts of Refract. 
 
-This section contains 2 real life scenarios:
-- [Building a counter component](../Tutorials/counter-app.md)
-- [Setting a global theme for your application](../Tutorials/global-theme.md)
+- [A counter component](../Tutorials/counter-app.md)
 
-Both these examples will implement the 3 core concepts and Refract APIs.
 
 Before you start
 

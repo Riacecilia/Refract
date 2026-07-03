@@ -7,7 +7,7 @@ title: "`createComponent`"
 
 The `createComponent()` API is the main entry point for defining a Refract component. It takes a single function and returns a component that can be rendered in your application. This function is your component's core logic, and it will automatically be provided with a unique **`lens` object** 🧰.
 
----
+
 
 ### Parameters
 

@@ -5,12 +5,13 @@ sidebar_position: 1
 
 # Build a counter application in Refract
 
-In this tutorial, we will create a counter application in Refract. 
+:::note[You will learn to:] 
 
-Along the way we will: 
 - create a component 
 - add reactivity to the counter so the UI changes when a user clicks it
 - create styling for the application user interface
+
+:::
 
 ## Prerequisites
 Before you start, make sure you have:
@@ -52,7 +53,7 @@ const Counter = createComponent(() => {
 ```
 
 
-Notice how the starting count variable is defined by `useRefraction` being set to 0. When a user clicks a button, the value of setCount updates by increasing by 1.
+Notice how the starting count variable is defined by `useRefraction` being set to 0. When a user clicks a button, the value of `setCount` updates by increasing by 1.
 
 ## Live Demo
 

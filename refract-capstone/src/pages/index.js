@@ -26,7 +26,7 @@ const cardsData = [
     title: 'Tutorials',
     icon: '📖',
     description: 'Build a small scale project with Refract to get a feel for how it works. ',
-    link: '/docs/tutorials',
+    link: '/docs/Tutorials',
   },
 ];
 

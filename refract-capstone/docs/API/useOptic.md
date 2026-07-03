@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: " `useOptic` "
+title: "`useOptic`"
 ---
 
 `useOptic()` is a Refract Hook that lets you synchronize a component's external systems and manage its side effects.

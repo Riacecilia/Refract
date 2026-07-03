@@ -3,7 +3,7 @@ sidebar_position: 3
 title: " `useOptic` "
 ---
 
-`useOptic` is a Refract Hook that lets you synchronize a component's external systems and manage its side effects.
+`useOptic()` is a Refract Hook that lets you synchronize a component's external systems and manage its side effects.
 
 
 ### Parameters
@@ -20,21 +20,21 @@ title: " `useOptic` "
 
 ### Returns
 
-`useOptic` returns nothing (undefined).
+`useOptic()` returns nothing (undefined).
 
 
 
 ### Usage Rules
 
-1. Call `useOptic` at the top level of your component. Do not call useOptic inside loops, conditions, or nested functions. This ensures that the hook is called in the same order on every render.
+1. Call `useOptic()` at the top level of your component. Do not call useOptic inside loops, conditions, or nested functions. This ensures that the hook is called in the same order on every render.
 
 2. The setup function must be synchronous. You can start an asynchronous action within it (like a fetch request), but you cannot declare the setup function as async.
 
 3. Return a cleanup function from setup to avoid memory leaks. The cleanup function should reverse any actions taken in the `setup` function. This is  important for event listeners, timers, and subscriptions. 
 
-4.  **The `setup` function runs after the DOM has been updated.** This is a critical rule. It means you can safely query the DOM, get measurements, or interact with rendered elements inside your `useOptic`'s `setup` function.
+4.  **The `setup` function runs after the DOM has been updated.** This is a critical rule. It means you can safely query the DOM, get measurements, or interact with rendered elements inside your `useOptic()`'s `setup` function.
 
-5. Keep rendering logic separate from side effects.** All side effects, such as mutations or asynchronous actions, must be contained within the `useOptic` hook's `setup` and cleanup functions. The component's main body should be pure and focused on returning JSX.
+5. Keep rendering logic separate from side effects.** All side effects, such as mutations or asynchronous actions, must be contained within the `useOptic()` hook's `setup` and cleanup functions. The component's main body should be pure and focused on returning JSX.
 
 
 
@@ -96,7 +96,7 @@ const ShoppingCart = createComponent(({ lens }) => {
 
 - Dependency-Aware Caching: The setup function is only re-executed if a dependency has genuinely changed, which is more efficient than manual checks and prevents unnecessary computations.
 
-- Animation-Aware Transitions:  `useOptic` can automatically synchronise its side effects with the browser's animation frame (requestAnimationFrame), which helps create fluid animations and visual transitions without manual management.
+- Animation-Aware Transitions:  `useOptic()` can automatically synchronise its side effects with the browser's animation frame (requestAnimationFrame), which helps create fluid animations and visual transitions without manual management.
 
 
 
@@ -150,9 +150,9 @@ function useInitialCount() {
 
 **Description:** Your application experiences unexpected behavior or a memory leak. For example, a global event listener continues to fire even after the component that added it has been removed.
 
-**Cause:** The `useOptic`'s `setup` function adds an external resource (like an event listener, timer, or subscription) but fails to return a cleanup function to remove it.
+**Cause:** The `useOptic()` `setup` function adds an external resource (like an event listener, timer, or subscription) but fails to return a cleanup function to remove it.
 
-**Fix:** Always return a function from the `useOptic`'s `setup` function that reverses the side effect. This is crucial for properly tearing down resources when the optic is unmounted or its dependencies change.
+**Fix:** Always return a function from the `useOptic` `setup` function that reverses the side effect. This is crucial for properly tearing down resources when the optic is unmounted or its dependencies change.
 
 **Incorrect Usage:**
 
@@ -199,7 +199,7 @@ function useMousePositionWithCleanup() {
 
 **Description:** Your side effect is not running when you expect it to, and the component's state is not updating to reflect a new value.
 
-**Cause:** The `setup` function of your `useOptic` hook uses a value (e.g., a state variable or prop) that is not included in its dependency array. Refract's runtime assumes the value has not changed and therefore skips re-running the side effect, leading to stale data.
+**Cause:** The `setup` function of your `useOptic()` hook uses a value (e.g., a state variable or prop) that is not included in its dependency array. Refract's runtime assumes the value has not changed and therefore skips re-running the side effect, leading to stale data.
 
 **Fix:** Carefully review your `setup` function and ensure that every value from your component's scope that is referenced inside it is also listed in the dependency array.
 

@@ -1,0 +1,85 @@
+/* src/pages/test-home.module.css */
+
+.heroBanner {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: var(--ifm-background-surface-color);
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.heroSubtitle {
+  font-size: 1.5rem;
+  font-style: italic;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.mainContainer {
+  padding: 3rem 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 0 1rem;
+}
+
+.cardItem {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--ifm-card-background-color, #ffffff);
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 12px;
+  text-decoration: none !important;
+  color: inherit !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.cardItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  border-color: var(--ifm-color-primary);
+}
+
+.cardIcon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+}
+
+:global([data-theme='dark']) .cardIcon {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.cardContent h3 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1.25rem;
+}
+
+.cardContent p {
+  margin: 0;
+  color: var(--ifm-color-emphasis-600);
+  font-size: 0.95rem;
+}

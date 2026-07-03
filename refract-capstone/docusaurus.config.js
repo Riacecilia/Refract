@@ -96,6 +96,7 @@ const config = {
       },
       footer: {
         style: 'dark',
+        /*Commenting out the entire links array so they don't render
         links: [
           {
             title: 'Docs',
@@ -133,7 +134,8 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        */
+        copyright: `Copyright © ${new Date().getFullYear()} A technical writing portfolio project by Maria Cecilia, Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,

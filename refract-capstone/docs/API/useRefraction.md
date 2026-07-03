@@ -7,7 +7,7 @@ title: "`useRefraction`"
 
 It stores data that persists between renders and automatically updates the UI when changed.
 
----
+
 
 ### Parameters
 

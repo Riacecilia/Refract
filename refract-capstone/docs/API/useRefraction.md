@@ -60,7 +60,7 @@ const Counter = createComponent(({ lens }) => {
 ### **Additional Key Information**
 
 
-- **Lazy Initial State:** If your initial state is the result of an expensive computation, you can pass a function to `useRefraction`. This function will only be executed once, on the very first render, which improves performance.
+- **Lazy Initial State:** If your initial state is the result of an expensive computation, you can pass a function to `useRefraction()`. This function will only be executed once, on the very first render, which improves performance.
 
 ```js
 // This function will only be called once on mount
@@ -112,11 +112,11 @@ const WorkingCounter = createComponent(({ lens }) => {
 
 ---
 
-#### Error: `useRefraction` is called conditionally
+#### Error: `useRefraction()` is called conditionally
 
 Refract hooks must be called at the top level of your component function.
 
-Errors (e.g. Invariant Violations) and unpredictable behaviour occur if you call `useRefraction`
+Errors (e.g. Invariant Violations) and unpredictable behaviour occur if you call `useRefraction()`
 - inside an `if` statement 
 - a loop
 - a nested function 

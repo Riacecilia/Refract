@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import styles from './test-home.module.css';
+import styles from './index.module.css';
 
 const cardsData = [
   {

@@ -57,7 +57,7 @@ Notice how the starting count variable is defined by `useRefraction` being set t
 
 ## Live Demo
 
-import CounterDemo from "@site/src/CounterDemo";
+import CounterDemo from '../../src/CounterDemo';
 
 <CounterDemo />
 

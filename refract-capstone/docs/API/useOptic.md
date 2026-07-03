@@ -5,7 +5,6 @@ title: " `useOptic` "
 
 `useOptic` is a Refract Hook that lets you synchronize a component's external systems and manage its side effects.
 
----
 
 ### Parameters
 
@@ -19,13 +18,11 @@ title: " `useOptic` "
 - If you provide an empty array ([]), the setup function will run only once when the component is first created.
     
 
----
-
 ### Returns
 
 `useOptic` returns nothing (undefined).
 
----
+
 
 ### Usage Rules
 
@@ -40,7 +37,7 @@ title: " `useOptic` "
 5. Keep rendering logic separate from side effects.** All side effects, such as mutations or asynchronous actions, must be contained within the `useOptic` hook's `setup` and cleanup functions. The component's main body should be pure and focused on returning JSX.
 
 
----
+
 
 ### Real-Life Example: A Shopping Cart
 
@@ -102,7 +99,6 @@ const ShoppingCart = createComponent(({ lens }) => {
 - Animation-Aware Transitions:  `useOptic` can automatically synchronise its side effects with the browser's animation frame (requestAnimationFrame), which helps create fluid animations and visual transitions without manual management.
 
 
----
 
 ### Troubleshooting and Error Documentation
 

@@ -74,23 +74,56 @@ app.mount('#app');
 ```
 
 ## 4. Full code for your application
+To run your application, check that the following code is contained in these 4 key files:
+
+- **main.js** : initialises the application instance
+- **app.js** : contains the core logic and visual template for UI components
+- **index.html** : provides the placeholder div where your application attaches itself and links the external JavaScript and CSS files together.
+- **styles.css**: Contains visual rules for your components. Controls the colors, sizing, and alignment of the text, button, and layout.
+
 
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
   <TabItem value="main.js" label="main.js" default>
-    ```
-    npm install refract-js
+    ```js
+    import { createApp } from '@refract-framework/core';
+import { Counter } from './app.js'; // <-- You must add this import line!
+
+const app = createApp();
+
+app.registerComponent('counter', Counter);
+
+// In your HTML:
+// <div id="app"></div>
+
+app.mount('#app');
     ```
   </TabItem>
   <TabItem value="app.js" label="app.js">
-    ```
-    yarn add refract-js
+    ```js
+   import { createComponent, useRefraction } from '@refract-framework/core';
+
+// The "export" keyword here allows main.js to import it!
+export const Counter = createComponent(() => {
+  const [count, setCount] = useRefraction(0); // Initialize with 0
+
+  return {
+    view: () => (
+      <div>
+        <p>Current count: {count.value}</p>
+        <button onClick={() => setCount(count.value + 1)}>
+          Increment
+        </button>
+      </div>
+    )
+  };
+});
     ```
   </TabItem>
   <TabItem value="index.html" label="index.html">
-    ```
+    ```html
     <!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
@@ -113,8 +146,53 @@ import TabItem from '@theme/TabItem';
     ```
   </TabItem>
   <TabItem value="style.css" label="style.css" default>
-    ```
-    npm install refract-js
+    ```css
+    /* Center everything on the screen */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* The card container */
+#app > div {
+  background: #fdfdfd;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  border: 1px solid #f0f0f0;
+}
+
+/* The "Current count" text */
+#app p {
+  font-size: 24px;
+  color: #333333;
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+/* The "Increment" button */
+#app button {
+  background-color: #0056b3;
+  color: white;
+  border: 1px solid #004494;
+  padding: 12px 36px;
+  font-size: 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: background-color 0.1s ease;
+}
+
+/* Button hover state */
+#app button:hover {
+  background-color: #004494;
+}
     ```
   </TabItem>
 </Tabs>
